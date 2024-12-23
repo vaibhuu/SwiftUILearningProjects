@@ -46,7 +46,7 @@ struct WeatherAppView: View {
 }
 
 #Preview {
-    ContentView()
+    WeatherAppView()
 }
 
 

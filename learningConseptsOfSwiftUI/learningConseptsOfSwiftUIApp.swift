@@ -11,7 +11,7 @@ import SwiftUI
 struct learningConseptsOfSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            WeatherAppView()
+            AppleFreameworkContentView()
         }
     }
 }
