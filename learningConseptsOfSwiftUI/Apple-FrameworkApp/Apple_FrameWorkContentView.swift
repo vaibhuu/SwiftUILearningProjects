@@ -11,22 +11,22 @@ struct AppleFreameworkContentView: View {
     @StateObject var viewModel = FrameworkGridViewModel()
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVGrid(columns: viewModel.columns) {
-                    ForEach(MockData.frameworks) { frameWork in
-                        FrameworkTitleView(framework: frameWork)
-                            .onTapGesture {
-                                viewModel.selectedFramework = frameWork
+        NavigationStack {
+            
+                ScrollView {
+                    LazyVGrid(columns: viewModel.columns) {
+                        ForEach(MockData.frameworks) { frameWork in
+                            NavigationLink {
+                                FrameworkDetailView(framework: frameWork)
+                            } label: {
+                                FrameworkTitleView(framework: frameWork)
                             }
+                            
+                        }
                     }
                 }
+                .navigationTitle("🍎 Framework")
             }
-            .navigationTitle("🍎 Framework")
-            .sheet(isPresented: $viewModel.isShowingDetailView) {
-                FrameworkDetailView(framework: viewModel.selectedFramework ?? MockData.sampleFramework, isShowingDetailView: $viewModel.isShowingDetailView)
-            }
-        }
     }
 }
 
